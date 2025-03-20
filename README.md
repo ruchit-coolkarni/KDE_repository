@@ -32,3 +32,27 @@ For Every Extreme Rainfall Day we got , we assigned an Wet to Active Station Rat
 
 See Figure below for details of the classification
 <img width="714" alt="Widespread vs Isolated" src="https://github.com/user-attachments/assets/8ac817de-aef2-4615-8c74-b8daca23afe5" />
+
+**Step 9: Visualizing Rainfall Dot Maps for Each Identified Widespread Event**
+
+We generate dot maps to visualize rainfall distribution for each widespread extreme rainfall event identified in the study.
+
+**Step 10: Applying Adaptive Kernel Density Estimation**
+
+Adaptive Kernel Density Estimation (KDE) is employed to reveal the underlying structure of rainfall data. Unlike standard KDE, adaptive KDE adjusts to spatial variations, reducing bias in areas with clustered stations.We created rainfall heat maps for each day in a particular widespread extreme rainfall event. The heat maps gave the spatial distribution of rainfall throughout the NSW region. We used a Gaussian kernel and bandwidth factor of 1.5 to detect the underlying density estimate, i.e. the region where rainfall density was highest. A bandwidth factor of 1.5 was applied using Silverman’s rule of thumb 
+
+**Step 11: Identifying and removing Coastal Widespread Extreme Rainfall Event**
+
+In the New South Wales GeoJSON file, unique polygon council boundaries east of the Great Dividing Range were identified. If the highest KDE peak for each day of a widespread extreme rainfall event falls within these polygons, the event is classified as a Coastal Widespread Extreme Rainfall Event and excluded from this analysis.
+
+**Step 12: Widespread Event Extreme Rainfall Pattern**
+
+Identifying the daily centres of the highest KDE density and connecting them over days allowed us to visualise the progression of the event. This resulted in a pattern that represents the movement of extreme rainfall in a particular widespread event.
+
+**Step 13: Removing Random 50 stations from the network**
+
+We randomly removed 50 stations from the network to manually observe the consistency of the extreme rainfall patterns identified for each widespread extreme rainfall event.
+
+**Final Step 14: Applying the Dynamic Time Warping Statistical Test**
+
+We calculated KDE density peaks for each day in a stepwise manner after removing 50 stations from the network, corresponding to days identified in each widespread extreme rainfall event. The Dynamic Time Warping (DTW) statistical test was then applied to determine the minimum and critical station density thresholds required to study historical extreme rainfall patterns.
